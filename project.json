@@ -1,0 +1,39 @@
+{
+  "assets": [],
+  "build": {
+    "build_id": "52CF4A0E-51",
+    "build_number": 51,
+    "build_time": 1651325833627,
+    "release": false
+  },
+  "encryptLevel": 0,
+  "useFeatures": [],
+  "icon": "res/icon.png",
+  "launchConfig": {
+    "displaySplash": false,
+    "hideLogs": false,
+    "splashText": "Powered by Auto.js Pro",
+    "stableMode": false
+  },
+  "main": "main.js",
+  "name": "autoFlipper",
+  "optimization": {
+    "removeAccessibilityService": false,
+    "removeOpenCv": false,
+    "unusedResources": true
+  },
+  "packageName": "com.frost.autoflipper",
+  "permissionConfig": {
+    "requestListOnStartup": [
+      "android.permission.WRITE_EXTERNAL_STORAGE"
+    ]
+  },
+  "scripts": {},
+  "signingConfig": {
+    "alias": "autoFlipper",
+    "keystore": "/storage/emulated/0/Pictures/.keystore/autojspro.jks",
+    "uuid": "608d229e-f6aa-4f23-a4c7-d8a7f9c3922b"
+  },
+  "versionCode": 1,
+  "versionName": "1.0.0"
+}
