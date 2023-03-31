@@ -1542,12 +1542,14 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "3.63";
+    const version = "0.00";
     const picNum = 130;
-    const baseUrl = "https://gitee.com/EFrostBlade/autoFlipper/raw/master/";
+    const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
+    const baseUrl = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
     if (Storage.get("tmp") == undefined) {
         Storage.put("tmp", 0);
     }
+    /*
     if (Storage.get("tmp") < 2) {
         if (WIDTH == 540 || WIDTH == 1080) {
             let img = images.load(baseUrl + "res/" + WIDTH + "/45.png");
@@ -1559,419 +1561,74 @@ function upDate() {
         }
         Storage.put("tmp", 2);
     }
-    if (Storage.get("tmp") < 3) {
-        if (WIDTH == 540 || WIDTH == 1080) {
-            let img = images.load(baseUrl + "res/" + WIDTH + "/62.png");
-            if (img != null) {
-                images.save(img, scriptPath + "/res/" + WIDTH + "/62.png");
-                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/62.png");
-                img.recycle();
-            }
-        }
-        Storage.put("tmp", 3);
-    }
-    if (Storage.get("tmp") < 4) {
-        if (WIDTH == 1080) {
-            let img = images.load(baseUrl + "res/" + WIDTH + "/8.png");
-            if (img != null) {
-                images.save(img, scriptPath + "/res/" + WIDTH + "/8.png");
-                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/8.png");
-                img.recycle();
-            }
-        }
-        Storage.put("tmp", 4);
-    }
-    if (Storage.get("tmp") < 5) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 5);
-    }
-    if (Storage.get("tmp") < 6) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/109.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/109.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/109.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 6);
-    }
-    if (Storage.get("tmp") < 7) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/111.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/111.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/111.png");
-            img2.recycle();
-        }
-        Storage.put("tmp", 7);
-    }
-    if (Storage.get("tmp") < 8) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 8);
-    }
-    if (Storage.get("tmp") < 9) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/39.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/39.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/39.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 9);
-    }
-    if (Storage.get("tmp") < 10) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/119.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/119.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/119.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/120.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/120.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/120.png");
-            img2.recycle();
-        }
-        Storage.put("tmp", 10);
-    }
-    if (Storage.get("tmp") < 11) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 11);
-    }
-    if (Storage.get("tmp") < 12) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/21.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/21.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/21.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 12);
-    }
-    if (Storage.get("tmp") < 13) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-            img2.recycle();
-        }
-        Storage.put("tmp", 13);
-    }
-    if (Storage.get("tmp") < 14) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/57.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/57.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/57.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/58.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/58.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/58.png");
-            img2.recycle();
-        }
-        Storage.put("tmp", 14);
-    }
-    if (Storage.get("tmp") < 15) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/123.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/123.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/123.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 15);
-    }
-    if (Storage.get("tmp") < 16) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/123.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/123.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/123.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 16);
-    }
-    if (Storage.get("tmp") < 17) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/57.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/57.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/57.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/58.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/58.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/58.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img3.recycle();
-        }
-        let img4 = images.load(baseUrl + "res/" + WIDTH + "/123.png");
-        if (img4 != null) {
-            images.save(img4, scriptPath + "/res/" + WIDTH + "/123.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/123.png");
-            img4.recycle();
-        }
-        let img5 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img5 != null) {
-            images.save(img5, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img5.recycle();
-        }
-        Storage.put("tmp", 17);
-        if (Storage.get("tmp") < 18) {
-            let img = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-            if (img != null) {
-                images.save(img, scriptPath + "/res/" + WIDTH + "/128.png");
-                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-                img.recycle();
-            }
-            Storage.put("tmp", 18);
-        }
-    }
-    if (Storage.get("tmp") < 19) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 19);
-    }
-    if (Storage.get("tmp") < 21) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 21);
-    }
-    if (Storage.get("tmp") < 22) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/46.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/46.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/46.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/47.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/47.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/47.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/24.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/24.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/24.png");
-            img3.recycle();
-        }
-        let img4 = images.load(baseUrl + "res/" + WIDTH + "/39.png");
-        if (img4 != null) {
-            images.save(img4, scriptPath + "/res/" + WIDTH + "/39.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/39.png");
-            img4.recycle();
-        }
-        Storage.put("tmp", 22);
-    }
-    if (Storage.get("tmp") < 23) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/33.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/33.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/33.png");
-            img.recycle();
-        }
-        Storage.put("tmp", 23);
-    }
-    if (Storage.get("tmp") < 24) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/129.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/129.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/129.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/47.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/47.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/47.png");
-            img2.recycle();
-        }
-        Storage.put("tmp", 24);
-    }
-    if (Storage.get("tmp") < 25) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 25);
-    }
-    if (Storage.get("tmp") < 26) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 26);
-    }
-    if (Storage.get("tmp") < 27) {
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 27);
-    }
-    if (Storage.get("tmp") < 28) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 28);
-    }
-    if (Storage.get("tmp") < 29) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 29);
-    }
+    */
     //initjinri();
 
 
     toastLog("检查更新……");
-    var remoteVersion = http.get(baseUrl + "version.js").body.string();
-    log("最新版本" + remoteVersion + "，当前版本" + version);
-    if (remoteVersion > version) {
-        //Storage.clear();
-        Storage.put("init", false);
-        toastLog("开始更新……")
-        for (let i = picNum + 1; ; i++) {
-            let img = images.load(baseUrl + "res/" + WIDTH + "/" + i + ".png");
-            if (img != null) {
-                images.save(img, scriptPath + "/res/" + WIDTH + "/" + i + ".png");
-                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/" + i + ".png");
-                img.recycle();
+    var remoteVersion = http.get(baseUrlproxy + "version.js").body.string();
+    if (isNaN(Number(remoteVersion))) {
+        var remoteVersion = http.get(baseUrl + "version.js").body.string();
+        if (isNaN(Number(remoteVersion))) {
+            log(remoteVersion)
+            toastLog("更新服务出错,请联系开发者，脚本将以离线模式运行");
+        } else {
+            log("最新版本" + remoteVersion + "，当前版本" + version);
+            if (remoteVersion > version) {
+                //Storage.clear();
+                Storage.put("init", false);
+                toastLog("开始更新……")
+                for (let i = picNum + 1; ; i++) {
+                    let img = images.load(baseUrl + "res/" + WIDTH + "/" + i + ".png");
+                    if (img != null) {
+                        images.save(img, scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                        log("保存图片于" + scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                        img.recycle();
+                    } else {
+                        toastLog("最新图片更新完成");
+                        break;
+                    }
+                }
+                var remoteMain = http.get(baseUrl + "main.js").body.string();
+                files.write(scriptPath + "/main.js", remoteMain);
+                var remoteScript = http.get(baseUrl + "script.js").body.string();
+                files.write(scriptPath + "/script.js", remoteScript);
+                toastLog("最新脚本更新完成");
+                engines.execScriptFile("./main.js");
+                exit();
             } else {
-                toastLog("最新图片更新完成");
-                break;
+                toastLog("当前已是最新版本");
             }
         }
-        var remoteMain = http.get(baseUrl + "main.js").body.string();
-        files.write(scriptPath + "/main.js", remoteMain);
-        var remoteScript = http.get(baseUrl + "script.js").body.string();
-        files.write(scriptPath + "/script.js", remoteScript);
-        toastLog("最新脚本更新完成");
-        engines.execScriptFile("./main.js");
-        exit();
     } else {
-        toastLog("当前已是最新版本");
+        log("最新版本" + remoteVersion + "，当前版本" + version);
+        if (remoteVersion > version) {
+            //Storage.clear();
+            Storage.put("init", false);
+            toastLog("开始更新……")
+            for (let i = picNum + 1; ; i++) {
+                let img = images.load(baseUrlproxy + "res/" + WIDTH + "/" + i + ".png");
+                if (img != null) {
+                    images.save(img, scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                    log("保存图片于" + scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                    img.recycle();
+                } else {
+                    toastLog("最新图片更新完成");
+                    break;
+                }
+            }
+            var remoteMain = http.get(baseUrlproxy + "main.js").body.string();
+            files.write(scriptPath + "/main.js", remoteMain);
+            var remoteScript = http.get(baseUrlproxy + "script.js").body.string();
+            files.write(scriptPath + "/script.js", remoteScript);
+            toastLog("最新脚本更新完成");
+            engines.execScriptFile("./main.js");
+            exit();
+        } else {
+            toastLog("当前已是最新版本");
+        }
     }
+
     return true;
 }
 
