@@ -1542,7 +1542,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "0.01";
+    const version = "0.02";
     const picNum = 130;
     const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";

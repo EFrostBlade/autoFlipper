@@ -403,6 +403,9 @@ events.broadcast.on("zhuye", () => {
         console.info("from主页to体力耗尽");
         return 0;
     } else {
+        console.log("今日活动挑战完成情况：" + Storage.get("jinrigaonan").state);
+        console.log("今日地狱完成情况：" + Storage.get("jinrigaonan").state);
+        console.log("今日双倍完成情况：" + Storage.get("jinrigaonan").state);
         if (Storage.get("jinrigaonan").state == false && Storage.get("gaonan") == true) {
             events.broadcast.emit("shuagaonan");
             console.info("from主页to刷高难");
