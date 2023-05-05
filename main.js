@@ -1542,7 +1542,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "0.02";
+    const version = "0.03";
     const picNum = 130;
     const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
@@ -1599,6 +1599,7 @@ function upDate() {
                 //Storage.clear();
                 Storage.put("init", false);
                 toastLog("当前更新服务器为github，开始更新……")
+                var picUrl = baseUrl;
                 for (let i = picNum + 1; ; i++) {
                     let img = images.load(baseUrl + "res/" + WIDTH + "/" + i + ".png");
                     if (img != null) {
@@ -1627,6 +1628,7 @@ function upDate() {
             //Storage.clear();
             Storage.put("init", false);
             toastLog("当前更新服务器为fastgit，开始更新……")
+            var picUrl = baseUrlproxy;
             for (let i = picNum + 1; ; i++) {
                 let img = images.load(baseUrlproxy + "res/" + WIDTH + "/" + i + ".png");
                 if (img != null) {
@@ -1650,6 +1652,30 @@ function upDate() {
         }
     }
 
+    if (Storage.get("tmp") == undefined) {
+        Storage.put("tmp", 0);
+    }
+    if (Storage.get("tmp") < 1) {
+        let img = images.load(picUrl + "res/" + WIDTH + "/122.png");
+        if (img != null) {
+            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
+            img.recycle();
+        }
+        let img2 = images.load(picUrl + "res/" + WIDTH + "/128.png");
+        if (img2 != null) {
+            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
+            img2.recycle();
+        }
+        let img3 = images.load(picUrl + "res/" + WIDTH + "/67.png");
+        if (img3 != null) {
+            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
+            img3.recycle();
+        }
+        Storage.put("tmp", 1);
+    }
     return true;
 }
 
