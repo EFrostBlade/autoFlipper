@@ -1546,136 +1546,87 @@ function upDate() {
     const picNum = 130;
     const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
-    if (Storage.get("tmp") == undefined) {
-        Storage.put("tmp", 0);
-    }
-    if (Storage.get("tmp") < 1) {
-        let img = images.load(baseUrl + "res/" + WIDTH + "/122.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
-            img.recycle();
-        }
-        let img2 = images.load(baseUrl + "res/" + WIDTH + "/128.png");
-        if (img2 != null) {
-            images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
-            img2.recycle();
-        }
-        let img3 = images.load(baseUrl + "res/" + WIDTH + "/67.png");
-        if (img3 != null) {
-            images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
-            img3.recycle();
-        }
-        Storage.put("tmp", 1);
-    }
-    /*
-    if (Storage.get("tmp") < 2) {
-        if (WIDTH == 540 || WIDTH == 1080) {
-            let img = images.load(baseUrl + "res/" + WIDTH + "/45.png");
-            if (img != null) {
-                images.save(img, scriptPath + "/res/" + WIDTH + "/45.png");
-                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/45.png");
-                img.recycle();
-            }
-        }
-        Storage.put("tmp", 2);
-    }
-    */
-    //initjinri();
-
-
     toastLog("检查更新……");
-    var remoteVersion = http.get(baseUrlproxy + "version.js").body.string();
+    var remoteVersion = http.get(baseUrl + "version.js").body.string();
+    var downUrl = baseUrl;
     if (isNaN(Number(remoteVersion))) {
-        var remoteVersion = http.get(baseUrl + "version.js").body.string();
+        log("github链接失败，正在切换至fastgit。。。错误信息：" + remoteVersion);
+        var downUrl = baseUrlproxy;
+        var remoteVersion = http.get(baseUrlproxy + "version.js").body.string();
         if (isNaN(Number(remoteVersion))) {
-            log(remoteVersion)
+            log("fastgit链接失败，错误信息：" + remoteVersion)
             toastLog("更新服务出错,请联系开发者，脚本将以离线模式运行");
-        } else {
-            log("最新版本" + remoteVersion + "，当前版本" + version);
-            if (remoteVersion > version) {
-                //Storage.clear();
-                Storage.put("init", false);
-                toastLog("当前更新服务器为github，开始更新……")
-                var picUrl = baseUrl;
-                for (let i = picNum + 1; ; i++) {
-                    let img = images.load(baseUrl + "res/" + WIDTH + "/" + i + ".png");
-                    if (img != null) {
-                        images.save(img, scriptPath + "/res/" + WIDTH + "/" + i + ".png");
-                        log("保存图片于" + scriptPath + "/res/" + WIDTH + "/" + i + ".png");
-                        img.recycle();
-                    } else {
-                        toastLog("最新图片更新完成");
-                        break;
-                    }
-                }
-                var remoteMain = http.get(baseUrl + "main.js").body.string();
-                files.write(scriptPath + "/main.js", remoteMain);
-                var remoteScript = http.get(baseUrl + "script.js").body.string();
-                files.write(scriptPath + "/script.js", remoteScript);
-                toastLog("最新脚本更新完成");
-                engines.execScriptFile("./main.js");
-                exit();
+            return true;
+        }
+    }
+    log("最新版本" + remoteVersion + "，当前版本" + version);
+    var updateVersion = remoteVersion - version;
+    if (updateVersion == 0.01) {
+        Storage.put("init", false);
+        toastLog("开始更新……")
+        for (let i = picNum + 1; ; i++) {
+            let img = images.load(downUrl + "res/" + WIDTH + "/" + i + ".png");
+            if (img != null) {
+                images.save(img, scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                img.recycle();
             } else {
-                toastLog("当前已是最新版本");
+                toastLog("最新图片更新完成");
+                break;
             }
         }
-    } else {
-        log("最新版本" + remoteVersion + "，当前版本" + version);
-        if (remoteVersion > version) {
-            //Storage.clear();
-            Storage.put("init", false);
-            toastLog("当前更新服务器为fastgit，开始更新……")
-            var picUrl = baseUrlproxy;
-            for (let i = picNum + 1; ; i++) {
-                let img = images.load(baseUrlproxy + "res/" + WIDTH + "/" + i + ".png");
-                if (img != null) {
-                    images.save(img, scriptPath + "/res/" + WIDTH + "/" + i + ".png");
-                    log("保存图片于" + scriptPath + "/res/" + WIDTH + "/" + i + ".png");
-                    img.recycle();
-                } else {
-                    toastLog("最新图片更新完成");
-                    break;
-                }
-            }
-            var remoteMain = http.get(baseUrlproxy + "main.js").body.string();
-            files.write(scriptPath + "/main.js", remoteMain);
-            var remoteScript = http.get(baseUrlproxy + "script.js").body.string();
-            files.write(scriptPath + "/script.js", remoteScript);
-            toastLog("最新脚本更新完成");
-            engines.execScriptFile("./main.js");
-            exit();
-        } else {
-            toastLog("当前已是最新版本");
-        }
-    }
-
-    if (Storage.get("tmp") == undefined) {
-        Storage.put("tmp", 0);
-    }
-    if (Storage.get("tmp") < 1) {
-        let img = images.load(picUrl + "res/" + WIDTH + "/122.png");
+        var remoteMain = http.get(downUrl + "main.js").body.string();
+        files.write(scriptPath + "/main.js", remoteMain);
+        var remoteScript = http.get(downUrl + "script.js").body.string();
+        files.write(scriptPath + "/script.js", remoteScript);
+        toastLog("最新脚本更新完成");
+        engines.execScriptFile("./main.js");
+        exit();
+    } else if (updateVersion > 0.01) {
+        Storage.put("init", false);
+        toastLog("开始更新……")
+        let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
         if (img != null) {
             images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
             img.recycle();
         }
-        let img2 = images.load(picUrl + "res/" + WIDTH + "/128.png");
+        let img2 = images.load(downUrl + "res/" + WIDTH + "/128.png");
         if (img2 != null) {
             images.save(img2, scriptPath + "/res/" + WIDTH + "/128.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
             img2.recycle();
         }
-        let img3 = images.load(picUrl + "res/" + WIDTH + "/67.png");
+        let img3 = images.load(downUrl + "res/" + WIDTH + "/67.png");
         if (img3 != null) {
             images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
             img3.recycle();
         }
-        Storage.put("tmp", 1);
+        for (let i = picNum + 1; ; i++) {
+            let img = images.load(downUrl + "res/" + WIDTH + "/" + i + ".png");
+            if (img != null) {
+                images.save(img, scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/" + i + ".png");
+                img.recycle();
+            } else {
+                toastLog("最新图片更新完成");
+                break;
+            }
+        }
+        var remoteMain = http.get(downUrl + "main.js").body.string();
+        files.write(scriptPath + "/main.js", remoteMain);
+        var remoteScript = http.get(downUrl + "script.js").body.string();
+        files.write(scriptPath + "/script.js", remoteScript);
+        toastLog("最新脚本更新完成");
+        engines.execScriptFile("./main.js");
+        exit();
     }
+    else {
+        toastLog("当前已是最新版本");
+    }
+
+
     return true;
 }
 
