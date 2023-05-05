@@ -1542,22 +1542,23 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "0.1";
+    const version = "0.2";
     const picNum = 130;
     const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     toastLog("检查更新……");
-    var remoteVersion = http.get(baseUrl + "version.js").body.string();
     var downUrl = baseUrl;
-    if (isNaN(Number(remoteVersion))) {
-        log("github链接失败，正在切换至fastgit。。。错误信息：" + remoteVersion);
+    try {
+        var remoteVersion = http.get(baseUrl + "version.js").body.string();
+    } catch (err) {
+        log("github请求超时，正在切换至fastgit。。。")
         var downUrl = baseUrlproxy;
         var remoteVersion = http.get(baseUrlproxy + "version.js").body.string();
-        if (isNaN(Number(remoteVersion))) {
-            log("fastgit链接失败，错误信息：" + remoteVersion)
-            toastLog("更新服务出错,请联系开发者，脚本将以离线模式运行");
-            return true;
-        }
+    }
+    if (isNaN(Number(remoteVersion))) {
+        log(downUrl + "更新失败，错误信息：" + remoteVersion)
+        toastLog("更新服务出错,请联系开发者，脚本将以离线模式运行");
+        return true;
     }
     log("最新版本" + remoteVersion + "，当前版本" + version);
     var updateVersion = remoteVersion - version;
