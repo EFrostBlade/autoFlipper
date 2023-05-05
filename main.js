@@ -1545,7 +1545,7 @@ function upDate() {
     const version = "0.03";
     const picNum = 130;
     const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
-    const baseUrl = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
+    const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     if (Storage.get("tmp") == undefined) {
         Storage.put("tmp", 0);
     }
