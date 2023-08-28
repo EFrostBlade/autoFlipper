@@ -28,15 +28,15 @@ events.broadcast.on("init", function () {
     initPic("放弃", 10, 0);
     initPic("旗子", 11, 1);
     initPic("推荐任务", 12, 1);
-    initPic("火素材", 13, 0);
-    initPic("水素材", 14, 0);
-    initPic("雷素材", 15, 0);
-    initPic("风素材", 16, 0);
-    initPic("光素材", 17, 0);
-    initPic("暗素材", 18, 0);
+    //initPic("火素材", 13, 0);
+    //initPic("水素材", 14, 0);
+    //initPic("雷素材", 15, 0);
+    //initPic("风素材", 16, 0);
+    //initPic("光素材", 17, 0);
+    //initPic("暗素材", 18, 0);
     initPic("玛娜", 19, 1);
     initPic("返回", 20, 1);
-    initPic("lv60", 21, 1);
+    //initPic("lv60", 21, 1);
     initPic("是", 22, 0);
     initPic("单倍挑战", 23, 1);
     initPic("双倍挑战", 24, 1);
@@ -152,6 +152,13 @@ events.broadcast.on("init", function () {
     initPic("单人活动", 128, 0);
     initPic("黄色铃铛", 129, 1);
     initPic("黄色参加", 130, 0);
+    initPic("培育道具", 131, 0);
+    initPic("火素材", 132, 0);
+    initPic("水素材", 133, 0);
+    initPic("雷素材", 134, 0);
+    initPic("风素材", 135, 0);
+    initPic("光素材", 136, 0);
+    initPic("暗素材", 137, 0);
 
 
 
@@ -222,7 +229,7 @@ events.broadcast.on("dengluqian", () => {
         let y = findPicTimes(1, 0, 0, "邮件")
         if (y != 0) {
             clickp(y[1]);
-            sleep(10000);
+            sleep(2000);
             let p = findPic("全部收取", "无法收取");
             if (p[0] == 0) {
                 clickp(p[1]);
@@ -543,6 +550,8 @@ events.broadcast.on("shuagaonan", () => {
     events.broadcast.emit("message1", "刷" + sx + nd);
     events.broadcast.emit("message2", "查找" + sx);
     { let a = findPic("旗子"); if (a == false) return 0; else clickp(a[1]) }
+    swipeup();
+    swipeup();
     let sy = findPic("0次", "高难");
     if (sy[0] == 0) {
         let j = Storage.get("jinrigaonan");
@@ -698,7 +707,7 @@ events.broadcast.on("shuashuangbei", () => {
     { let a = findPic("旗子"); if (a == false) return 0; else clickp(a[1]) };
     { let a = findPic("推荐任务"); if (a == false) return 0; }
     for (let i = 0; ; i++) {
-        var p = findPicTimes(2, 800, 0, sx);
+        var p = findPicTimes(2, 800, 0, "培育素材");
         if (p == 0) {
             swipeup();
         } else {
@@ -706,6 +715,24 @@ events.broadcast.on("shuashuangbei", () => {
             break;
         }
         if (i > 3) {
+            var text = "未找到培育素材";
+            events.broadcast.emit("message2", text);
+            qqerror(screen, text);
+            backHome();
+            events.broadcast.emit("zhuye")
+            console.info("from刷双倍to主页");
+            return 0;
+        }
+    }
+    for (let i = 0; ; i++) {
+        var p = findPicTimes(2, 800, 0, sx);
+        if (p == 0) {
+            swipeup();
+        } else {
+            clickp(p[1]);
+            break;
+        }
+        if (i > 5) {
             var text = "未找到" + sx;
             events.broadcast.emit("message2", text);
             qqerror(screen, text);
@@ -716,7 +743,6 @@ events.broadcast.on("shuashuangbei", () => {
         }
     }
     events.broadcast.emit("message2", "开始刷双倍" + sx);
-    { let a = findPic("lv60"); if (a == false) return 0; else clickp(a[1]) };
     let sb = findPic("是", "单倍挑战");
     if (sb[0] == 0) {
         clickp(sb[1]);
@@ -811,7 +837,24 @@ events.broadcast.on("shuasucai", () => {
     events.broadcast.emit("message2", "查找" + sx);
     { let a = findPic("旗子"); if (a == false) return 0; else clickp(a[1]) };
     { let a = findPic("推荐任务"); if (a == false) return 0; }
-
+    for (let i = 0; ; i++) {
+        var p = findPicTimes(2, 800, 0, "培育素材");
+        if (p == 0) {
+            swipeup();
+        } else {
+            clickp(p[1]);
+            break;
+        }
+        if (i > 3) {
+            var text = "未找到培育素材";
+            events.broadcast.emit("message2", text);
+            qqerror(screen, text);
+            backHome();
+            events.broadcast.emit("zhuye")
+            console.info("from刷双倍to主页");
+            return 0;
+        }
+    }
     for (let i = 0; ; i++) {
         var p = findPicTimes(2, 800, 0, sx);
         if (p == 0) {
@@ -831,7 +874,6 @@ events.broadcast.on("shuasucai", () => {
         }
     }
     events.broadcast.emit("message2", "开始刷" + sx);
-    { let a = findPic("lv60"); if (a == false) return 0; else clickp(a[1]) };
     sleep(1000);
     let tmp = findPicTimes(1, 1000, 0, "是");
     if (tmp != 0) {
@@ -964,7 +1006,24 @@ events.broadcast.on("shuashenceng", () => {
     events.broadcast.emit("message1", "刷" + sx + "，已刷" + cs + "次");
     events.broadcast.emit("message2", "查找" + sx);
     { let a = findPic("旗子"); if (a == false) return 0; else clickp(a[1]) };
-    { let a = findPic("深层"); if (a == false) return 0; else clickp(a[1]) };
+    for (let i = 0; ; i++) {
+        var p = findPicTimes(2, 800, 0, "深层");
+        if (p == 0) {
+            swipeup();
+        } else {
+            clickp(p[1]);
+            break;
+        }
+        if (i > 3) {
+            var text = "未找到培育素材";
+            events.broadcast.emit("message2", text);
+            qqerror(screen, text);
+            backHome();
+            events.broadcast.emit("zhuye")
+            console.info("from刷双倍to主页");
+            return 0;
+        }
+    }
     { let a = findPic("暗深层"); if (a == false) return 0; }
     for (let i = 0; ; i++) {
         var p = findPicTimes(2, 800, 0, sx);
