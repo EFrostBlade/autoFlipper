@@ -707,7 +707,7 @@ events.broadcast.on("shuashuangbei", () => {
     { let a = findPic("旗子"); if (a == false) return 0; else clickp(a[1]) };
     { let a = findPic("推荐任务"); if (a == false) return 0; }
     for (let i = 0; ; i++) {
-        var p = findPicTimes(2, 800, 0, "培育素材");
+        var p = findPicTimes(2, 800, 0, "培育道具");
         if (p == 0) {
             swipeup();
         } else {
@@ -715,7 +715,7 @@ events.broadcast.on("shuashuangbei", () => {
             break;
         }
         if (i > 3) {
-            var text = "未找到培育素材";
+            var text = "未找到培育道具";
             events.broadcast.emit("message2", text);
             qqerror(screen, text);
             backHome();
@@ -838,7 +838,7 @@ events.broadcast.on("shuasucai", () => {
     { let a = findPic("旗子"); if (a == false) return 0; else clickp(a[1]) };
     { let a = findPic("推荐任务"); if (a == false) return 0; }
     for (let i = 0; ; i++) {
-        var p = findPicTimes(2, 800, 0, "培育素材");
+        var p = findPicTimes(2, 800, 0, "培育道具");
         if (p == 0) {
             swipeup();
         } else {
@@ -846,7 +846,7 @@ events.broadcast.on("shuasucai", () => {
             break;
         }
         if (i > 3) {
-            var text = "未找到培育素材";
+            var text = "未找到培育道具";
             events.broadcast.emit("message2", text);
             qqerror(screen, text);
             backHome();
@@ -1015,7 +1015,7 @@ events.broadcast.on("shuashenceng", () => {
             break;
         }
         if (i > 3) {
-            var text = "未找到培育素材";
+            var text = "未找到深层";
             events.broadcast.emit("message2", text);
             qqerror(screen, text);
             backHome();
