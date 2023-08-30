@@ -1542,7 +1542,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "0.6";
+    const version = "0.7";
     const picNum = 137;
     const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1562,14 +1562,6 @@ function upDate() {
     }
     log("最新版本" + remoteVersion + "，当前版本" + version);
     var updateVersion = remoteVersion - version;
-    if (version < 0.6) {
-        let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
-        if (img != null) {
-            images.save(img, scriptPath + "/res/" + WIDTH + "/23.png");
-            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/23.png");
-            img.recycle();
-        }
-    }
     if (updateVersion == 0.01) {
         Storage.put("init", false);
         toastLog("开始更新……")
@@ -1611,6 +1603,14 @@ function upDate() {
             images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
             img3.recycle();
+        }
+        if (version <= 0.7) {
+            let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
+            if (img != null) {
+                images.save(img, scriptPath + "/res/" + WIDTH + "/23.png");
+                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/23.png");
+                img.recycle();
+            }
         }
         for (let i = picNum + 1; ; i++) {
             let img = images.load(downUrl + "res/" + WIDTH + "/" + i + ".png");
