@@ -1561,6 +1561,14 @@ function upDate() {
         return true;
     }
     log("最新版本" + remoteVersion + "，当前版本" + version);
+    if (version <= 0.7) {
+        let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
+        if (img != null) {
+            images.save(img, scriptPath + "/res/" + WIDTH + "/23.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/23.png");
+            img.recycle();
+        }
+    }
     var updateVersion = remoteVersion - version;
     if (updateVersion == 0.01) {
         Storage.put("init", false);
@@ -1603,14 +1611,6 @@ function upDate() {
             images.save(img3, scriptPath + "/res/" + WIDTH + "/67.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/67.png");
             img3.recycle();
-        }
-        if (version <= 0.7) {
-            let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
-            if (img != null) {
-                images.save(img, scriptPath + "/res/" + WIDTH + "/23.png");
-                log("保存图片于" + scriptPath + "/res/" + WIDTH + "/23.png");
-                img.recycle();
-            }
         }
         for (let i = picNum + 1; ; i++) {
             let img = images.load(downUrl + "res/" + WIDTH + "/" + i + ".png");
