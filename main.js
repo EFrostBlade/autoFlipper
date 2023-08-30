@@ -1542,7 +1542,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "0.7";
+    const version = "0.8";
     const picNum = 137;
     const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1560,8 +1560,9 @@ function upDate() {
         toastLog("更新服务出错,请联系开发者，脚本将以离线模式运行");
         return true;
     }
+    log(downUrl)
     log("最新版本" + remoteVersion + "，当前版本" + version);
-    if (version <= 0.7) {
+    if (Number(version) <= 0.8) {
         log("更新原有图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
         if (img != null) {
