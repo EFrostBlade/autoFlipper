@@ -1562,6 +1562,7 @@ function upDate() {
     }
     log("最新版本" + remoteVersion + "，当前版本" + version);
     if (version <= 0.7) {
+        log("更新原有图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
         if (img != null) {
             images.save(img, scriptPath + "/res/" + WIDTH + "/23.png");
