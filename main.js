@@ -1542,7 +1542,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "1.0";
+    const version = "1.1";
     const picNum = 137;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1551,7 +1551,7 @@ function upDate() {
     try {
         var remoteVersion = http.get(baseUrl + "version.js").body.string();
     } catch (err) {
-        log("github请求超时，正在切换至fastgit。。。")
+        log("github请求超时，正在切换至kgit。。。")
         var downUrl = baseUrlproxy;
         var remoteVersion = http.get(baseUrlproxy + "version.js").body.string();
     }
@@ -1571,7 +1571,7 @@ function upDate() {
             img.recycle();
         }
     }
-    var updateVersion = remoteVersion - version;
+    var updateVersion = Number(remoteVersion) - Number(version);
     if (updateVersion == 0.01) {
         Storage.put("init", false);
         toastLog("开始更新……")
