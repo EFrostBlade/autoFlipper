@@ -550,6 +550,7 @@ events.broadcast.on("shuagaonan", () => {
     events.broadcast.emit("message1", "刷" + sx + nd);
     events.broadcast.emit("message2", "查找" + sx);
     { let a = findPic("旗子"); if (a == false) return 0; else clickp(a[1]) }
+    { let a = findPic("推荐任务"); if (a == false) return 0; }
     swipeup();
     swipeup();
     let sy = findPic("0次", "高难");
