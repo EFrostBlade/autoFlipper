@@ -1542,9 +1542,9 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "0.9";
+    const version = "1.0";
     const picNum = 137;
-    const baseUrlproxy = "https://raw.fastgit.org/EFrostBlade/autoFlipper/main/";
+    const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     toastLog("检查更新……");
     var downUrl = baseUrl;
@@ -1562,7 +1562,7 @@ function upDate() {
     }
     log(downUrl)
     log("最新版本" + remoteVersion + "，当前版本" + version);
-    if (Number(version) <= 0.8) {
+    if (Number(version) <= 1.0) {
         log("更新原有图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
         if (img != null) {
