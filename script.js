@@ -684,7 +684,7 @@ events.broadcast.on("shuazhanzhen", () => {
         }
     }
     var p = findPicTimes(3, 800, 0, "战阵地狱");
-    if (p == o) {
+    if (p == 0) {
         var text = "未找到战阵地狱";
         events.broadcast.emit("message2", text);
         qqerror(screen, text);
