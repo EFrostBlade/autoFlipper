@@ -792,7 +792,7 @@ events.broadcast.on("shuazhanzhen", () => {
                         }
                         break;
                     }
-                } else if (a[0] == 1) {
+                } else if (js[0] == 1) {
                     cs++;
                     var text = "已刷" + cs + "次战阵,";
                     if (h[0] > 0) {
