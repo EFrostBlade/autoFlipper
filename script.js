@@ -773,9 +773,16 @@ events.broadcast.on("shuazhanzhen", () => {
                     return 0;
                 } else {
                     clickp(y[1]);
-                    let j = findPic("加药");
-                    clickp(j[1]);
-                    clickp(j[1]);
+                    let j = findPic("加药", "使用");
+                    if (j[0] == 0) {
+                        clickp(j[1]);
+                        clickp(j[1]);
+                    } else if (j[0] == 1) {
+                        clickp(j[1]);
+                        events.broadcast.emit("zhuye")
+                        console.info("from刷战阵to主页");
+                        return 0;
+                    }
                     { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
                     { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
                     h[y[0]] = h[y[0]] + 3;
@@ -817,9 +824,16 @@ events.broadcast.on("shuazhanzhen", () => {
                             return 0;
                         } else {
                             clickp(y[1]);
-                            let j = findPic("加药");
-                            clickp(j[1]);
-                            clickp(j[1]);
+                            let j = findPic("加药", "使用");
+                            if (j[0] == 0) {
+                                clickp(j[1]);
+                                clickp(j[1]);
+                            } else if (j[0] == 1) {
+                                clickp(j[1]);
+                                events.broadcast.emit("zhuye")
+                                console.info("from刷战阵to主页");
+                                return 0;
+                            }
                             { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
                             { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
                             h[y[0]] = h[y[0]] + 3;
