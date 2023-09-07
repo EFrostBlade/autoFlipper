@@ -298,6 +298,8 @@ function Menu() {
                             <horizontal>
                                 <checkbox textSize="8sp" id="wuxian" text="抽无限池" />
                                 <text w="5" />
+                                <checkbox textSize="8sp" id="zhanzhen" textColor="gold" text="我tm刷爆战阵！" />
+                                <text w="5" />
                             </horizontal>
                             <horizontal>
                                 <checkbox textSize="8sp" id="shuangbei" text="双倍素材" />
@@ -554,6 +556,9 @@ function Menu() {
     }
     if (Storage.get("wuxian")) {
         menu.wuxian.attr("checked", Storage.get("wuxian"));
+    }
+    if (Storage.get("zhanzhen")) {
+        menu.zhanzhen.attr("checked", Storage.get("zhanzhen"));
     }
     if (Storage.get("shuangbei")) {
         menu.shuangbei.attr("checked", Storage.get("shuangbei"));
@@ -1523,6 +1528,9 @@ function initjinri() {
         if (Storage.get("kaiche1") == true || Storage.get("kaiche2") == true) {
             text += "开车\n";
         }
+        if (Storage.get("zhanzhen") == true) {
+            text = "我tm刷爆战阵！"
+        }
         log(text);
         /*
         noti = floaty.rawWindow(
@@ -1542,8 +1550,8 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "1.1";
-    const picNum = 137;
+    const version = "1.2";
+    const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     toastLog("检查更新……");
@@ -1569,6 +1577,27 @@ function upDate() {
             images.save(img, scriptPath + "/res/" + WIDTH + "/23.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/23.png");
             img.recycle();
+        }
+    }
+    if (Number(version) <= 1.2) {
+        log("更新原有图片中")
+        let img = images.load(downUrl + "res/" + WIDTH + "/34.png");
+        if (img != null) {
+            images.save(img, scriptPath + "/res/" + WIDTH + "/34.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/34.png");
+            img.recycle();
+        }
+        let img2 = images.load(downUrl + "res/" + WIDTH + "/35.png");
+        if (img2 != null) {
+            images.save(img2, scriptPath + "/res/" + WIDTH + "/35.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/35.png");
+            img2.recycle();
+        }
+        let img3 = images.load(downUrl + "res/" + WIDTH + "/36.png");
+        if (img3 != null) {
+            images.save(img3, scriptPath + "/res/" + WIDTH + "/36.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/36.png");
+            img3.recycle();
         }
     }
     var updateVersion = Number(remoteVersion) - Number(version);
@@ -1656,6 +1685,7 @@ function putStorage() {
     Storage.put("wuqi", menu.wuqi.checked);
     Storage.put("zhenpin", menu.zhenpin.checked);
     Storage.put("wuxian", menu.wuxian.checked);
+    Storage.put("zhanzhen", menu.zhanzhen.checked);
     Storage.put("shuangbei", menu.shuangbei.checked);
     Storage.put("shuangbeishuxing", menu.shuangbeishuxing.getSelectedItemPosition());
     Storage.put("gaonan", menu.gaonan.checked);

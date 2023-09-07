@@ -49,9 +49,9 @@ events.broadcast.on("init", function () {
     initPic("退出战斗", 31, 1);
     initPic("取消", 32, 0);
     initPic("挑战", 33, 0);
-    initPic("小红", 34, 1);
-    initPic("中红", 35, 1);
-    initPic("大红", 36, 1);
+    initPic("小红", 34, 0);
+    initPic("中红", 35, 0);
+    initPic("大红", 36, 0);
     initPic("使用", 37, 1);
     initPic("深层", 38, 0);
     initPic("暗深层", 39, 1);
@@ -159,7 +159,16 @@ events.broadcast.on("init", function () {
     initPic("风素材", 135, 0);
     initPic("光素材", 136, 0);
     initPic("暗素材", 137, 0);
-
+    initPic("小黄", 138, 0);
+    initPic("单人续战开", 139, 0);
+    initPic("单人续战关", 140, 0);
+    initPic("战阵", 141, 0);
+    initPic("战阵地狱", 142, 0);
+    initPic("紫色旗子", 143, 0);
+    initPic("续战结束", 144, 1);
+    initPic("体力不足", 145, 1);
+    initPic("加体", 146, 1);
+    initPic("加药", 147, 1);
 
 
 
@@ -238,6 +247,11 @@ events.broadcast.on("dengluqian", () => {
             } else if (p == false) return 0;
             { let a = findPic("返回"); if (a == false) return 0; else clickp(a[1]) };
         }
+    }
+    if (Storage.get("zhanzhen") == true) {
+        events.broadcast.emit("message1", "刷战阵！");
+        events.broadcast.emit("shuazhanzhen");
+        console.info("刷战阵刷战阵");
     }
     if (Storage.get("wuxian") == true) {
         console.info("无限池");
@@ -617,6 +631,215 @@ events.broadcast.on("shuagaonan", () => {
     }
 
 
+})
+
+events.broadcast.on("shuazhanzhen", () => {
+    console.info("刷战阵");
+    if (flag == false) {
+        return 0;
+    }
+    backHome();
+    var cs = Storage.get("yidazhanzhen");
+    var h = new Array(0, 0, 0, 0);
+    events.broadcast.emit("message1", "刷战阵，已刷" + cs + "次");
+    events.broadcast.emit("message2", "进入战阵");
+    for (let i = 0; ; i++) {
+        if (i >= 3) {
+            var text = "未找到单人";
+            events.broadcast.emit("message2", text);
+            qqerror(screen, text);
+            backHome();
+            events.broadcast.emit("zhuye")
+            console.info("from刷深层to主页");
+            return 0;
+        }
+        let a = findPic("旗子");
+        if (a == false) {
+            backHome();
+        }
+        else clickp(a[1]);
+        sleep(1000);
+        let b = findPic("推荐任务");
+        if (a == false) {
+            continue;
+        }
+        else break;
+    }
+    for (let i = 0; ; i++) {
+        var p = findPicTimes(2, 800, 0, "战阵");
+        if (p == 0) {
+            swipeup();
+        } else {
+            clickp(p[1]);
+            break;
+        }
+        if (i > 3) {
+            var text = "未找到战阵";
+            events.broadcast.emit("message2", text);
+            qqerror(screen, text);
+            backHome();
+            events.broadcast.emit("zhuye")
+            console.info("from刷双倍to主页");
+            return 0;
+        }
+    }
+    var p = findPicTimes(3, 800, 0, "战阵地狱");
+    if (p == o) {
+        var text = "未找到战阵地狱";
+        events.broadcast.emit("message2", text);
+        qqerror(screen, text);
+        backHome();
+        events.broadcast.emit("zhuye");
+        console.info("from刷素材to主页");
+        return 0;
+    } else {
+        clickp(p[1]);
+    }
+    events.broadcast.emit("message2", "开始刷战阵");
+    while (1) {
+        let tmp = findPic("挑战");
+        if (tmp[0] == 0) {
+            let xz = findPicTimes(3, 0, 400, "单人续战关");
+            if (xz != 0) {
+                clickp(xz[1]);
+            }
+            let bz = findPicTimes(3, 0, 400, "体力不足");
+            if (bz != 0) {
+                let a = findPic("ok");
+                if (a == false) return 0;
+                else clickp(a[1]);
+                { let a = findPic("加体"); if (a == false) return 0; else clickp(a[1]) };
+                let y = findPicTimes(3, 200, 0, "小黄", "小红", "中红", "大红");
+                if (y == 0) {
+                    qqerror(screen, "你药没啦！");
+                    return 0;
+                } else {
+                    clickp(y[1]);
+                    let j = findPic("加药");
+                    clickp(j[1]);
+                    clickp(j[1]);
+                    { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
+                    { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
+                    h[y[0]] = h[y[0]] + 3;
+                    var text = "已刷" + cs + "次战阵,";
+                    if (h[0] > 0) {
+                        text += h[0] + "小黄";
+                    }
+                    if (h[1] > 0) {
+                        text += h[1] + "小红";
+                    }
+                    if (h[2] > 0) {
+                        text += h[2] + "中红";
+                    }
+                    if (h[3] > 0) {
+                        text += h[3] + "大红";
+                    }
+                    events.broadcast.emit("message1", text);
+                }
+            }
+            clickp(xz[1]);
+        } else if (tmp == false) return 0;
+        clickp(tmp[1]);
+        //events.broadcast.emit("message2", "判断体力");
+        var tl = findPic("ok", "取消");
+        if (tl[0] == 0) {
+            clickp(tl[0]);
+            while (1) {
+                let js = findPic("续战结束", "ok")
+                if (js[0] == 0) {
+                    let a = findPic("ok");
+                    if (a == false) {
+                        return 0;
+                    } else {
+                        clickp(a[1]);
+                        { let a = findPic("加体"); if (a == false) return 0; else clickp(a[1]) };
+                        let y = findPicTimes(3, 200, 0, "小黄", "小红", "中红", "大红");
+                        if (y == 0) {
+                            qqerror(screen, "你药没啦！");
+                            return 0;
+                        } else {
+                            clickp(y[1]);
+                            let j = findPic("加药");
+                            clickp(j[1]);
+                            clickp(j[1]);
+                            { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
+                            { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
+                            h[y[0]] = h[y[0]] + 3;
+                            var text = "已刷" + cs + "次战阵,";
+                            if (h[0] > 0) {
+                                text += h[0] + "小黄";
+                            }
+                            if (h[1] > 0) {
+                                text += h[1] + "小红";
+                            }
+                            if (h[2] > 0) {
+                                text += h[2] + "中红";
+                            }
+                            if (h[3] > 0) {
+                                text += h[3] + "大红";
+                            }
+                            events.broadcast.emit("message1", text);
+                        }
+                        break;
+                    }
+                } else if (a[0] == 1) {
+                    cs++;
+                    var text = "已刷" + cs + "次战阵,";
+                    if (h[0] > 0) {
+                        text += h[0] + "小黄";
+                    }
+                    if (h[1] > 0) {
+                        text += h[1] + "小红";
+                    }
+                    if (h[2] > 0) {
+                        text += h[2] + "中红";
+                    }
+                    if (h[3] > 0) {
+                        text += h[3] + "大红";
+                    }
+                    events.broadcast.emit("message1", text);
+                    events.broadcast.emit("message2", "准备下次战斗");
+                    continue;
+                }
+            }
+            continue;
+        } else {
+            let y = findPicTimes(1, 200, 0, "小黄", "小红", "中红", "大红");
+            if (y == 0) {
+                qqerror(screen, "你药没啦！");
+                break;
+            } else {
+                clickp(y[1]);
+                let j = findPic("+");
+                clickp(j[1]);
+                { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
+                { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
+                h[y[0]]++;
+                var text = "已刷" + cs + "次战阵,";
+                if (h[0] > 0) {
+                    text += h[0] + "小黄";
+                }
+                if (h[1] > 0) {
+                    text += h[1] + "小红";
+                }
+                if (h[2] > 0) {
+                    text += h[2] + "中红";
+                }
+                if (h[3] > 0) {
+                    text += h[3] + "大红";
+                }
+                events.broadcast.emit("message1", text);
+            }
+        }
+    }
+    clickp(tl[1]);
+    Storage.put("yidadanren", cs);
+    events.broadcast.emit("message1", "体力耗尽");
+    sleep(1000);
+    backHome();
+    events.broadcast.emit("tilihaojin");
+    console.info("from刷战阵to体力耗尽");
+    return 0;
 })
 
 events.broadcast.on("shuahuodong", () => {
