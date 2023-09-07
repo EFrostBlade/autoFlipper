@@ -748,7 +748,7 @@ events.broadcast.on("shuazhanzhen", () => {
         //events.broadcast.emit("message2", "判断体力");
         var tl = findPic("ok", "取消");
         if (tl[0] == 0) {
-            clickp(tl[0]);
+            clickp(tl[1]);
             while (1) {
                 let js = findPic("续战结束", "ok")
                 if (js[0] == 0) {
