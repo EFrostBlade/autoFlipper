@@ -638,7 +638,7 @@ events.broadcast.on("shuagaonan", () => {
 
 })
 
-events.broadcast.on("wuxianchi"), () => {
+events.broadcast.on("wuxianchi", () => {
     console.info("无限池");
     events.broadcast.emit("message2", "抽无限池");
     backHome();
@@ -676,7 +676,7 @@ events.broadcast.on("wuxianchi"), () => {
     events.broadcast.emit("zhuye");
     console.info("from无限池to主页");
     return 0;
-}
+})
 
 events.broadcast.on("shuazhanzhen", () => {
     console.info("刷战阵");

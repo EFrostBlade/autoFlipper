@@ -1551,7 +1551,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "2.6";
+    const version = "2.8";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1569,13 +1569,13 @@ function upDate() {
         toastLog("更新服务出错,请联系开发者，脚本将以离线模式运行");
         return true;
     }
-    log(downUrl)
-    log("最新版本" + remoteVersion + "，当前版本" + version);
+    log(downUrl);
     if (Storage.get("oldVersion") == undefined) {
         var oldVersion = 0;
     } else {
         var oldVersion = Storage.get("oldVersion");
     }
+    log("最新版本" + remoteVersion + "，当前版本" + version + "，历史版本" + oldVersion);
     if (Number(version) > Number(oldVersion) && Number(version) <= 1.0) {
         log("更新1.0图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
