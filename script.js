@@ -653,7 +653,7 @@ events.broadcast.on("shuazhanzhen", () => {
             console.info("from刷深层to主页");
             return 0;
         }
-        let a = findPic("旗子");
+        let a = findPic("紫色旗子");
         if (a == false) {
             backHome();
         }
@@ -697,7 +697,7 @@ events.broadcast.on("shuazhanzhen", () => {
     }
     events.broadcast.emit("message2", "开始刷战阵");
     while (1) {
-        let tmp = findPic("紫色挑战");
+        let tmp = findPic("挑战");
         if (tmp[0] == 0) {
             let xz = findPicTimes(3, 0, 400, "单人续战关");
             if (xz != 0) {
