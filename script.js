@@ -638,6 +638,46 @@ events.broadcast.on("shuagaonan", () => {
 
 })
 
+events.broadcast.on("wuxianchi"), () => {
+    console.info("无限池");
+    events.broadcast.emit("message2", "抽无限池");
+    backHome();
+    while (1) {
+        let jr = findPic("抽取", "无限池", "活动道具", "商店"); if (jr == false) return 0;
+        if (jr[0] == 3) {
+            clickp(jr[1]);
+        } else if (jr[0] == 2) {
+            clickp(jr[1]);
+        } else if (jr[0] == 1) {
+            clickp(jr[1]);
+        } else if (jr[0] == 0) {
+            break;
+        }
+    }
+    while (1) {
+        let c = findPic("抽完", "刷新", "抽取"); if (c == false) return 0;
+        clickp(c[1]);
+        if (c[0] == 1) {
+            while (1) {
+                let o = findPic("抽取", "ok"); if (o == false) return0;
+                if (o[0] == 1) {
+                    clickp(o[1]);
+                } else if (o[0] == 0) {
+                    break;
+                }
+            }
+        } else if (c[0] == 2) {
+            clickp(c[1]);
+        } else if (c[0] == 0) {
+            break;
+        }
+    }
+    backHome();
+    events.broadcast.emit("zhuye");
+    console.info("from无限池to主页");
+    return 0;
+}
+
 events.broadcast.on("shuazhanzhen", () => {
     console.info("刷战阵");
     if (flag == false) {
@@ -707,13 +747,21 @@ events.broadcast.on("shuazhanzhen", () => {
     }
     events.broadcast.emit("message2", "开始刷战阵");
     while (1) {
+        if (cs >= 150) {
+            cs = 0;
+            Storage.put("yidazhanzhen", cs);
+            events.broadcast.emit("message1", "抽无限池");
+            events.broadcast.emit("wuxianchi");
+            console.info("from刷战阵to抽无限池");
+            return 0;
+        }
         let tmp = findPic("挑战");
         if (tmp[0] == 0) {
             let xz = findPic("单人续战关");
             if (xz != false) {
                 clickp(xz[1]);
             } else return 0;
-            let bz = findPicTimes(5, 400, 0, "体力不足");
+            let bz = findPicTimes(2, 400, 0, "体力不足");
             if (bz != 0) {
                 let a = findPic("ok");
                 if (a == false) return 0;
@@ -843,7 +891,7 @@ events.broadcast.on("shuazhanzhen", () => {
         }
     }
     clickp(tl[1]);
-    Storage.put("yidadanren", cs);
+    Storage.put("yidazhanzhen", cs);
     events.broadcast.emit("message1", "体力耗尽");
     sleep(1000);
     backHome();

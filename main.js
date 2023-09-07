@@ -892,6 +892,7 @@ function Menu() {
             getPackage();
             Storage.put("yidagongdou", 0);
             Storage.put("yidadanren", 0);
+            Storage.put("yidazhanzhen", 0);
             Storage.put("yikaicheshu", 0);
 
 
@@ -1252,6 +1253,7 @@ function startScript() {
     initjinri();
     Storage.put("yidagongdou", 0);
     Storage.put("yidadanren", 0);
+    Storage.put("yidazhanzhen", 0);
     Storage.put("yikaicheshu", 0);
     tmp = threads.start(function () {
         //在新线程执行的代码
@@ -1549,7 +1551,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "2.5";
+    const version = "2.6";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1569,7 +1571,12 @@ function upDate() {
     }
     log(downUrl)
     log("最新版本" + remoteVersion + "，当前版本" + version);
-    if (Number(version) <= 1.0) {
+    if (Storage.get("oldVersion") == undefined) {
+        var oldVersion = 0;
+    } else {
+        var oldVersion = Storage.get("oldVersion");
+    }
+    if (Number(version) > Number(oldVersion) && Number(version) <= 1.0) {
         log("更新1.0图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
         if (img != null) {
@@ -1578,7 +1585,7 @@ function upDate() {
             img.recycle();
         }
     }
-    if (Number(version) <= 1.2) {
+    if (Number(version) > Number(oldVersion) && Number(version) <= 1.2) {
         log("更新1.2图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/34.png");
         if (img != null) {
@@ -1599,7 +1606,7 @@ function upDate() {
             img3.recycle();
         }
     }
-    if (Number(version) <= 2.0) {
+    if (Number(version) > Number(oldVersion) && Number(version) <= 2.0) {
         log("更新2.0图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/139.png");
         if (img != null) {
@@ -1614,7 +1621,7 @@ function upDate() {
             img2.recycle();
         }
     }
-    if (Number(version) <= 2.1) {
+    if (Number(version) > Number(oldVersion) && Number(version) <= 2.1) {
         log("更新2.1图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/146.png");
         if (img != null) {
@@ -1623,8 +1630,23 @@ function upDate() {
             img.recycle();
         }
     }
+    if (Number(version) > Number(oldVersion) && Number(version) <= 2.6) {
+        log("更新2.6图片中")
+        let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
+        if (img != null) {
+            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
+            img.recycle();
+        }
+        let img2 = images.load(downUrl + "res/" + WIDTH + "/138.png");
+        if (img2 != null) {
+            images.save(img2, scriptPath + "/res/" + WIDTH + "/138.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/138.png");
+            img2.recycle();
+        }
+    }
     var updateVersion = Number(remoteVersion) - Number(version);
-    if (updateVersion == 0.01) {
+    if (updateVersion > 0) {
         Storage.put("init", false);
         toastLog("开始更新……")
         for (let i = picNum + 1; ; i++) {
@@ -1645,7 +1667,9 @@ function upDate() {
         toastLog("最新脚本更新完成");
         engines.execScriptFile("./main.js");
         exit();
-    } else if (updateVersion > 0.01) {
+    }
+    /*
+    else if (updateVersion > 0.01) {
         Storage.put("init", false);
         toastLog("开始更新……")
         let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
@@ -1685,10 +1709,11 @@ function upDate() {
         engines.execScriptFile("./main.js");
         exit();
     }
+    */
     else {
         toastLog("当前已是最新版本");
     }
-
+    Storage.put("oldVersion", version);
 
     return true;
 }
