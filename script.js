@@ -699,17 +699,17 @@ events.broadcast.on("shuazhanzhen", () => {
     while (1) {
         let tmp = findPic("挑战");
         if (tmp[0] == 0) {
-            let xz = findPicTimes(3, 0, 400, "单人续战关");
+            let xz = findPicTimes(5, 400, 0, "单人续战关");
             if (xz != 0) {
                 clickp(xz[1]);
             }
-            let bz = findPicTimes(3, 0, 400, "体力不足");
+            let bz = findPicTimes(5, 400, 0, "体力不足");
             if (bz != 0) {
                 let a = findPic("ok");
                 if (a == false) return 0;
                 else clickp(a[1]);
                 { let a = findPic("加体"); if (a == false) return 0; else clickp(a[1]) };
-                let y = findPicTimes(3, 200, 0, "小黄", "小红", "中红", "大红");
+                let y = findPicTimes(5, 200, 0, "小黄", "小红", "中红", "大红");
                 if (y == 0) {
                     qqerror(screen, "你药没啦！");
                     return 0;
