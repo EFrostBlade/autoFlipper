@@ -52,7 +52,7 @@ events.broadcast.on("init", function () {
     initPic("小红", 34, 0);
     initPic("中红", 35, 0);
     initPic("大红", 36, 0);
-    initPic("使用", 37, 1);
+    initPic("使用", 37, 0);
     initPic("深层", 38, 0);
     initPic("暗深层", 39, 1);
     initPic("光深层", 40, 0);
