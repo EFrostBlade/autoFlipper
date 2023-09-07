@@ -1549,7 +1549,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "2.4";
+    const version = "2.5";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
