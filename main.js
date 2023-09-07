@@ -1549,7 +1549,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "1.9";
+    const version = "2.0";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1597,6 +1597,21 @@ function upDate() {
             images.save(img3, scriptPath + "/res/" + WIDTH + "/36.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/36.png");
             img3.recycle();
+        }
+    }
+    if (Number(version) <= 2.0) {
+        log("更新1.2图片中")
+        let img = images.load(downUrl + "res/" + WIDTH + "/139.png");
+        if (img != null) {
+            images.save(img, scriptPath + "/res/" + WIDTH + "/139.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/139.png");
+            img.recycle();
+        }
+        let img2 = images.load(downUrl + "res/" + WIDTH + "/140.png");
+        if (img2 != null) {
+            images.save(img2, scriptPath + "/res/" + WIDTH + "/140.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/140.png");
+            img2.recycle();
         }
     }
     var updateVersion = Number(remoteVersion) - Number(version);
