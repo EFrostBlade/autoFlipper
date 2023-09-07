@@ -857,6 +857,7 @@ events.broadcast.on("shuazhanzhen", () => {
                     }
                     events.broadcast.emit("message1", text);
                     events.broadcast.emit("message2", "准备下次战斗");
+                    sleep(2000);
                     continue;
                 }
             }
