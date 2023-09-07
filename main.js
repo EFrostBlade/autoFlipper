@@ -298,8 +298,7 @@ function Menu() {
                             <horizontal>
                                 <checkbox textSize="8sp" id="wuxian" text="抽无限池" />
                                 <text w="5" />
-                                <checkbox textSize="8sp" id="zhanzhen" textColor="gold" text="我tm刷爆战阵！" />
-                                <text w="5" />
+                                <checkbox textSize="8sp" id="zhanzhen" textColor="red" text="我tm刷爆战阵！" />
                             </horizontal>
                             <horizontal>
                                 <checkbox textSize="8sp" id="shuangbei" text="双倍素材" />
@@ -1550,7 +1549,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "1.2";
+    const version = "1.3";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
