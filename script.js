@@ -688,17 +688,22 @@ events.broadcast.on("shuazhanzhen", () => {
             return 0;
         }
     }
-    var p = findPic("战阵地狱");
-    if (p == false) {
-        var text = "未找到战阵地狱";
-        events.broadcast.emit("message2", text);
-        qqerror(screen, text);
-        backHome();
-        events.broadcast.emit("zhuye");
-        console.info("from刷素材to主页");
-        return 0;
-    } else {
-        clickp(p[1]);
+    while (1) {
+        var p = findPic("关闭", "战阵地狱");
+        if (p == false) {
+            var text = "未找到战阵地狱";
+            events.broadcast.emit("message2", text);
+            qqerror(screen, text);
+            backHome();
+            events.broadcast.emit("zhuye");
+            console.info("from刷战阵to主页");
+            return 0;
+        } else if (p[0] == 0) {
+            clickp(p[1]);
+        } else if (p[0] == 1) {
+            clickp(p[1]);
+            break;
+        }
     }
     events.broadcast.emit("message2", "开始刷战阵");
     while (1) {
@@ -741,8 +746,8 @@ events.broadcast.on("shuazhanzhen", () => {
                     }
                     events.broadcast.emit("message1", text);
                 }
+                clickp(xz[1]);
             }
-            clickp(xz[1]);
         } else if (tmp == false) return 0;
         clickp(tmp[1]);
         //events.broadcast.emit("message2", "判断体力");
