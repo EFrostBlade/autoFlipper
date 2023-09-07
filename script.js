@@ -697,7 +697,7 @@ events.broadcast.on("shuazhanzhen", () => {
     }
     events.broadcast.emit("message2", "开始刷战阵");
     while (1) {
-        let tmp = findPic("挑战");
+        let tmp = findPic("紫色挑战");
         if (tmp[0] == 0) {
             let xz = findPicTimes(3, 0, 400, "单人续战关");
             if (xz != 0) {

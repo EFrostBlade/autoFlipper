@@ -1549,7 +1549,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "1.3";
+    const version = "1.4";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1570,7 +1570,7 @@ function upDate() {
     log(downUrl)
     log("最新版本" + remoteVersion + "，当前版本" + version);
     if (Number(version) <= 1.0) {
-        log("更新原有图片中")
+        log("更新1.0图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
         if (img != null) {
             images.save(img, scriptPath + "/res/" + WIDTH + "/23.png");
@@ -1579,7 +1579,7 @@ function upDate() {
         }
     }
     if (Number(version) <= 1.2) {
-        log("更新原有图片中")
+        log("更新1.2图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/34.png");
         if (img != null) {
             images.save(img, scriptPath + "/res/" + WIDTH + "/34.png");
