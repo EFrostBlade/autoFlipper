@@ -419,6 +419,11 @@ events.broadcast.on("zhuye", () => {
             break;
         }
     }
+    if (Storage.get("zhanzhen") == true) {
+        events.broadcast.emit("message1", "刷战阵！");
+        events.broadcast.emit("shuazhanzhen");
+        console.info("刷战阵刷战阵");
+    }
     if (findPicTimes(1, 600, 0, "足体") == 0) {
         events.broadcast.emit("tilihaojin");
         console.info("from主页to体力耗尽");
@@ -699,10 +704,10 @@ events.broadcast.on("shuazhanzhen", () => {
     while (1) {
         let tmp = findPic("挑战");
         if (tmp[0] == 0) {
-            let xz = findPicTimes(5, 400, 0, "单人续战关");
-            if (xz != 0) {
+            let xz = findPic("单人续战关");
+            if (xz != false) {
                 clickp(xz[1]);
-            }
+            } else return 0;
             let bz = findPicTimes(5, 400, 0, "体力不足");
             if (bz != 0) {
                 let a = findPic("ok");
