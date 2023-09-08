@@ -1551,7 +1551,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "3.5";
+    const version = "3.6";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1575,7 +1575,7 @@ function upDate() {
     } else {
         var oldVersion = Storage.get("oldVersion");
     }
-    if (version == "3.5") {
+    if (oldVersion <= "3.5") {
         oldVersion = 0;
     }
     log("最新版本" + remoteVersion + "，当前版本" + version + "，历史版本" + oldVersion);
