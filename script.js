@@ -815,10 +815,12 @@ events.broadcast.on("shuazhanzhen", () => {
             while (1) {
                 let ks = findPic("续战结束", "等待中", "暂停");
                 if (ks[0] == 2) {
-                    events.broadcast.emit("message2", "开局点板");
-                    for (let i = 0; i < 12; i++) {
-                        clickp(WIDTH * 0.5, HEIGHT * 0.7);
-                        sleep(200);
+                    if (Storage.get("dianban") == true) {
+                        events.broadcast.emit("message2", "开局点板");
+                        for (let i = 0; i < 12; i++) {
+                            clickp(WIDTH * 0.5, HEIGHT * 0.7);
+                            sleep(200);
+                        }
                     }
                     let js = findPic("ok");
                     cs++;
