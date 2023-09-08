@@ -1551,7 +1551,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "3.4";
+    const version = "3.5";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1575,6 +1575,9 @@ function upDate() {
     } else {
         var oldVersion = Storage.get("oldVersion");
     }
+    if (version == "3.5") {
+        oldVersion = 0;
+    }
     log("最新版本" + remoteVersion + "，当前版本" + version + "，历史版本" + oldVersion);
     if (Number(version) > Number(oldVersion) && Number(version) <= 1.0) {
         log("更新1.0图片中")
@@ -1585,7 +1588,7 @@ function upDate() {
             img.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion) && Number(version) <= 1.2) {
+    if (Number(version) > Number(oldVersion)) {
         log("更新1.2图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/34.png");
         if (img != null) {
@@ -1606,7 +1609,7 @@ function upDate() {
             img3.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion) && Number(version) <= 2.0) {
+    if (Number(version) > Number(oldVersion)) {
         log("更新2.0图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/139.png");
         if (img != null) {
@@ -1621,7 +1624,7 @@ function upDate() {
             img2.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion) && Number(version) <= 2.1) {
+    if (Number(version) > Number(oldVersion)) {
         log("更新2.1图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/146.png");
         if (img != null) {
@@ -1630,7 +1633,7 @@ function upDate() {
             img.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion) && Number(version) <= 2.6) {
+    if (Number(version) > Number(oldVersion)) {
         log("更新2.6图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
         if (img != null) {
@@ -1645,7 +1648,7 @@ function upDate() {
             img2.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion) && Number(version) <= 3.3) {
+    if (Number(version) > Number(oldVersion)) {
         log("更新3.3图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
         if (img != null) {
