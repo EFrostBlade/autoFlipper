@@ -248,11 +248,13 @@ events.broadcast.on("dengluqian", () => {
             { let a = findPic("返回"); if (a == false) return 0; else clickp(a[1]) };
         }
     }
+    /*
     if (Storage.get("zhanzhen") == true) {
         events.broadcast.emit("message1", "刷战阵！");
         events.broadcast.emit("shuazhanzhen");
         console.info("刷战阵刷战阵");
     }
+    */
     if (Storage.get("wuxian") == true) {
         console.info("无限池");
         events.broadcast.emit("message2", "抽无限池");
@@ -810,6 +812,16 @@ events.broadcast.on("shuazhanzhen", () => {
         if (tl[0] == 0) {
             clickp(tl[1]);
             while (1) {
+                while (1) {
+                    let ks = findPic("等待中", "暂停");
+                    if (p[0] == 1) {
+                        for (let i = 0; i < 12; i++) {
+                            clickp(WIDTH * 0.5, HEIGHT * 0.7);
+                            sleep(200);
+                        }
+                        break;
+                    }
+                }
                 let js = findPic("续战结束", "ok")
                 if (js[0] == 0) {
                     let a = findPic("ok");
