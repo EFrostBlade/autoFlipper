@@ -425,6 +425,7 @@ events.broadcast.on("zhuye", () => {
         events.broadcast.emit("message1", "刷战阵！");
         events.broadcast.emit("shuazhanzhen");
         console.info("刷战阵刷战阵");
+        return 0;
     }
     if (findPicTimes(1, 600, 0, "足体") == 0) {
         events.broadcast.emit("tilihaojin");
