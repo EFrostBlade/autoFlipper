@@ -1551,7 +1551,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "3.2";
+    const version = "3.4";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1643,6 +1643,15 @@ function upDate() {
             images.save(img2, scriptPath + "/res/" + WIDTH + "/138.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/138.png");
             img2.recycle();
+        }
+    }
+    if (Number(version) > Number(oldVersion) && Number(version) <= 3.3) {
+        log("更新3.3图片中")
+        let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
+        if (img != null) {
+            images.save(img, scriptPath + "/res/" + WIDTH + "/122.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
+            img.recycle();
         }
     }
     var updateVersion = Number(remoteVersion) - Number(version);

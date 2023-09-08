@@ -822,13 +822,30 @@ events.broadcast.on("shuazhanzhen", () => {
                         break;
                     }
                 }
-                let js = findPic("续战结束", "ok")
+                let js = findPic("ok");
                 if (js[0] == 0) {
-                    let a = findPic("ok");
-                    if (a == false) {
-                        return 0;
+                    let a = findPicTimes(1, 200, 0, "续战结束");
+                    if (a == 0) {
+                        cs++;
+                        var text = "已刷" + cs + "次战阵,";
+                        if (h[0] > 0) {
+                            text += h[0] + "小黄";
+                        }
+                        if (h[1] > 0) {
+                            text += h[1] + "小红";
+                        }
+                        if (h[2] > 0) {
+                            text += h[2] + "中红";
+                        }
+                        if (h[3] > 0) {
+                            text += h[3] + "大红";
+                        }
+                        events.broadcast.emit("message1", text);
+                        events.broadcast.emit("message2", "准备下次战斗");
+                        sleep(2000);
+                        continue;
                     } else {
-                        clickp(a[1]);
+                        clickp(js[1]);
                         { let a = findPic("加体"); if (a == false) return 0; else clickp(a[1]) };
                         let y = findPicTimes(3, 200, 0, "小黄", "小红", "中红", "大红");
                         if (y == 0) {
@@ -866,25 +883,6 @@ events.broadcast.on("shuazhanzhen", () => {
                         }
                         break;
                     }
-                } else if (js[0] == 1) {
-                    cs++;
-                    var text = "已刷" + cs + "次战阵,";
-                    if (h[0] > 0) {
-                        text += h[0] + "小黄";
-                    }
-                    if (h[1] > 0) {
-                        text += h[1] + "小红";
-                    }
-                    if (h[2] > 0) {
-                        text += h[2] + "中红";
-                    }
-                    if (h[3] > 0) {
-                        text += h[3] + "大红";
-                    }
-                    events.broadcast.emit("message1", text);
-                    events.broadcast.emit("message2", "准备下次战斗");
-                    sleep(2000);
-                    continue;
                 }
             }
             continue;
