@@ -918,43 +918,44 @@ events.broadcast.on("shuazhanzhen", () => {
             }
             continue;
         }
-        else {
-            let y = findPicTimes(1, 200, 0, "小黄", "小红", "中红", "大红");
-            if (y == 0) {
-                qqerror(screen, "你药没啦！");
-                break;
-            } else {
-                clickp(y[1]);
-                let j = findPic("+");
-                clickp(j[1]);
-                { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
-                { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
-                h[y[0]]++;
-                var text = "已刷" + cs + "次战阵,";
-                if (h[0] > 0) {
-                    text += h[0] + "小黄";
-                }
-                if (h[1] > 0) {
-                    text += h[1] + "小红";
-                }
-                if (h[2] > 0) {
-                    text += h[2] + "中红";
-                }
-                if (h[3] > 0) {
-                    text += h[3] + "大红";
-                }
-                events.broadcast.emit("message1", text);
+    }
+    /*else {
+        let y = findPicTimes(1, 200, 0, "小黄", "小红", "中红", "大红");
+        if (y == 0) {
+            qqerror(screen, "你药没啦！");
+            break;
+        } else {
+            clickp(y[1]);
+            let j = findPic("+");
+            clickp(j[1]);
+            { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
+            { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
+            h[y[0]]++;
+            var text = "已刷" + cs + "次战阵,";
+            if (h[0] > 0) {
+                text += h[0] + "小黄";
             }
+            if (h[1] > 0) {
+                text += h[1] + "小红";
+            }
+            if (h[2] > 0) {
+                text += h[2] + "中红";
+            }
+            if (h[3] > 0) {
+                text += h[3] + "大红";
+            }
+            events.broadcast.emit("message1", text);
         }
     }
-    clickp(tl[1]);
-    Storage.put("yidazhanzhen", cs);
-    events.broadcast.emit("message1", "体力耗尽");
-    sleep(1000);
-    backHome();
-    events.broadcast.emit("tilihaojin");
-    console.info("from刷战阵to体力耗尽");
-    return 0;
+}
+clickp(tl[1]);
+Storage.put("yidazhanzhen", cs);
+events.broadcast.emit("message1", "体力耗尽");
+sleep(1000);
+backHome();
+events.broadcast.emit("tilihaojin");
+console.info("from刷战阵to体力耗尽");
+return 0;*/
 })
 
 events.broadcast.on("shuahuodong", () => {
