@@ -821,8 +821,8 @@ events.broadcast.on("shuazhanzhen", () => {
                     }
                     events.broadcast.emit("message1", text);
                 }
+                clickp(xz[1]);
             }
-            clickp(xz[1]);
         } else if (tmp == false) return 0;
         clickp(tmp[1]);
         //events.broadcast.emit("message2", "判断体力");
