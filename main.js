@@ -1551,7 +1551,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "4.1";
+    const version = "4.2";
     const picNum = 147;
     const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1588,7 +1588,7 @@ function upDate() {
             img.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion)) {
+    if (Number(version) > Number(oldVersion) >= 1.2) {
         log("更新1.2图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/34.png");
         if (img != null) {
@@ -1609,7 +1609,7 @@ function upDate() {
             img3.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion)) {
+    if (Number(version) > Number(oldVersion) >= 2.0) {
         log("更新2.0图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/139.png");
         if (img != null) {
@@ -1624,7 +1624,7 @@ function upDate() {
             img2.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion)) {
+    if (Number(version) > Number(oldVersion) >= 2.1) {
         log("更新2.1图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/146.png");
         if (img != null) {
@@ -1633,7 +1633,7 @@ function upDate() {
             img.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion)) {
+    if (Number(version) > Number(oldVersion) >= 2.6) {
         log("更新2.6图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
         if (img != null) {
@@ -1648,7 +1648,7 @@ function upDate() {
             img2.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion)) {
+    if (Number(version) > Number(oldVersion) >= 3.2) {
         log("更新3.3图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/122.png");
         if (img != null) {
@@ -1657,7 +1657,7 @@ function upDate() {
             img.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion)) {
+    if (Number(version) > Number(oldVersion) >= 3.9) {
         log("更新3.9图片中")
         let img2 = images.load(downUrl + "res/" + WIDTH + "/35.png");
         if (img2 != null) {
