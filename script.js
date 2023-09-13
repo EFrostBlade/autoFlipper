@@ -775,20 +775,37 @@ events.broadcast.on("shuazhanzhen", () => {
                     qqerror(screen, "你药没啦！");
                     return 0;
                 } else {
-                    clickp(y[1]);
-                    let j = findPic("加药", "使用");
-                    if (j[0] == 0) {
-                        clickp(j[1]);
-                        clickp(j[1]);
-                    } else if (j[0] == 1) {
-                        clickp(j[1]);
-                        events.broadcast.emit("zhuye")
-                        console.info("from刷战阵to主页");
-                        return 0;
+                    if (y[0] < 2) {
+                        clickp(y[1]);
+                        let j = findPic("加药", "使用");
+                        if (j[0] == 0) {
+                            clickp(j[1]);
+                            clickp(j[1]);
+                        } else if (j[0] == 1) {
+                            clickp(j[1]);
+                            events.broadcast.emit("zhuye")
+                            console.info("from刷战阵to主页");
+                            return 0;
+                        }
+                        h[y[0]] = h[y[0]] + 3;
+                    } else if (y[0] == 2) {
+                        clickp(y[1]);
+                        let j = findPic("加药", "使用");
+                        if (j[0] == 0) {
+                            clickp(j[1]);
+                        } else if (j[0] == 1) {
+                            clickp(j[1]);
+                            events.broadcast.emit("zhuye")
+                            console.info("from刷战阵to主页");
+                            return 0;
+                        }
+                        h[y[0]] = h[y[0]] + 2;
+                    } else if (y[0] == 3) {
+                        clickp(y[1]);
+                        h[y[0]] = h[y[0]] + 1;
                     }
                     { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
                     { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
-                    h[y[0]] = h[y[0]] + 3;
                     var text = "已刷" + cs + "次战阵,";
                     if (h[0] > 0) {
                         text += h[0] + "小黄";
@@ -804,8 +821,8 @@ events.broadcast.on("shuazhanzhen", () => {
                     }
                     events.broadcast.emit("message1", text);
                 }
-                clickp(xz[1]);
             }
+            clickp(xz[1]);
         } else if (tmp == false) return 0;
         clickp(tmp[1]);
         //events.broadcast.emit("message2", "判断体力");
@@ -845,25 +862,42 @@ events.broadcast.on("shuazhanzhen", () => {
                     let js = findPic("ok");
                     clickp(js[1]);
                     { let a = findPic("加体"); if (a == false) return 0; else clickp(a[1]) };
-                    let y = findPicTimes(3, 200, 0, "小黄", "小红", "中红", "大红");
+                    let y = findPicTimes(5, 200, 0, "小黄", "小红", "中红", "大红");
                     if (y == 0) {
                         qqerror(screen, "你药没啦！");
                         return 0;
                     } else {
-                        clickp(y[1]);
-                        let j = findPic("加药", "使用");
-                        if (j[0] == 0) {
-                            clickp(j[1]);
-                            clickp(j[1]);
-                        } else if (j[0] == 1) {
-                            clickp(j[1]);
-                            events.broadcast.emit("zhuye")
-                            console.info("from刷战阵to主页");
-                            return 0;
+                        if (y[0] < 2) {
+                            clickp(y[1]);
+                            let j = findPic("加药", "使用");
+                            if (j[0] == 0) {
+                                clickp(j[1]);
+                                clickp(j[1]);
+                            } else if (j[0] == 1) {
+                                clickp(j[1]);
+                                events.broadcast.emit("zhuye")
+                                console.info("from刷战阵to主页");
+                                return 0;
+                            }
+                            h[y[0]] = h[y[0]] + 3;
+                        } else if (y[0] == 2) {
+                            clickp(y[1]);
+                            let j = findPic("加药", "使用");
+                            if (j[0] == 0) {
+                                clickp(j[1]);
+                            } else if (j[0] == 1) {
+                                clickp(j[1]);
+                                events.broadcast.emit("zhuye")
+                                console.info("from刷战阵to主页");
+                                return 0;
+                            }
+                            h[y[0]] = h[y[0]] + 2;
+                        } else if (y[0] == 3) {
+                            clickp(y[1]);
+                            h[y[0]] = h[y[0]] + 1;
                         }
                         { let a = findPic("使用"); if (a == false) return 0; else clickp(a[1]) };
                         { let a = findPic("ok"); if (a == false) return 0; else clickp(a[1]) };
-                        h[y[0]] = h[y[0]] + 3;
                         var text = "已刷" + cs + "次战阵,";
                         if (h[0] > 0) {
                             text += h[0] + "小黄";
@@ -883,7 +917,8 @@ events.broadcast.on("shuazhanzhen", () => {
                 }
             }
             continue;
-        } else {
+        }
+        else {
             let y = findPicTimes(1, 200, 0, "小黄", "小红", "中红", "大红");
             if (y == 0) {
                 qqerror(screen, "你药没啦！");
