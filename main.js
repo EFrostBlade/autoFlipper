@@ -1551,9 +1551,9 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "4.2";
+    const version = "4.3";
     const picNum = 147;
-    const baseUrlproxy = "https://raw.kgithub.com/EFrostBlade/autoFlipper/main/";
+    const baseUrlproxy = "https://ghproxy/https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     toastLog("检查更新……");
     var downUrl = baseUrl;
