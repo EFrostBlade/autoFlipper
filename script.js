@@ -687,6 +687,15 @@ events.broadcast.on("shuazhanzhen", () => {
         return 0;
     }
     backHome();
+    var wxc = Storage.get("yichouwuxianchi");
+    if (wxc != true) {
+        wxc = true;
+        Storage.put("yichouwuxianchi", wxc);
+        events.broadcast.emit("message1", "抽无限池");
+        events.broadcast.emit("wuxianchi");
+        console.info("from主页to抽无限池");
+        return 0;
+    }
     var cs = Storage.get("yidazhanzhen");
     var h = new Array(0, 0, 0, 0);
     events.broadcast.emit("message1", "刷战阵，已刷" + cs + "次");
@@ -753,6 +762,7 @@ events.broadcast.on("shuazhanzhen", () => {
         if (cs >= 150) {
             cs = 0;
             Storage.put("yidazhanzhen", cs);
+            Storage.put("yichouwuxianchi", true);
             events.broadcast.emit("message1", "抽无限池");
             events.broadcast.emit("wuxianchi");
             console.info("from刷战阵to抽无限池");
@@ -842,6 +852,7 @@ events.broadcast.on("shuazhanzhen", () => {
                     }
                     let js = findPic("ok");
                     cs++;
+                    Storage.put("yidazhanzhen", cs);
                     var text = "已刷" + cs + "次战阵,";
                     if (h[0] > 0) {
                         text += h[0] + "小黄";
