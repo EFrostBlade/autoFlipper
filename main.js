@@ -893,6 +893,7 @@ function Menu() {
             Storage.put("yidagongdou", 0);
             Storage.put("yidadanren", 0);
             Storage.put("yidazhanzhen", 0);
+            Storage.put("yichoywuxianchi", false);
             Storage.put("yikaicheshu", 0);
 
 
@@ -1551,16 +1552,16 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "4.3";
+    const version = "4.5";
     const picNum = 147;
-    const baseUrlproxy = "https://ghproxy/https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
+    const baseUrlproxy = "https://ghproxy.com/raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     toastLog("检查更新……");
     var downUrl = baseUrl;
     try {
         var remoteVersion = http.get(baseUrl + "version.js").body.string();
     } catch (err) {
-        log("github请求超时，正在切换至kgit。。。")
+        log("github请求超时，正在切换至ghproxy。。。")
         var downUrl = baseUrlproxy;
         var remoteVersion = http.get(baseUrlproxy + "version.js").body.string();
     }
