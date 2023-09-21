@@ -1255,6 +1255,7 @@ function startScript() {
     Storage.put("yidagongdou", 0);
     Storage.put("yidadanren", 0);
     Storage.put("yidazhanzhen", 0);
+    Storage.put("yichoywuxianchi", false);
     Storage.put("yikaicheshu", 0);
     tmp = threads.start(function () {
         //在新线程执行的代码
@@ -1552,7 +1553,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "4.5";
+    const version = "4.6";
     const picNum = 147;
     const baseUrlproxy = "https://ghproxy.com/raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";

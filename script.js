@@ -757,6 +757,7 @@ events.broadcast.on("shuazhanzhen", () => {
             break;
         }
     }
+    Storage.put("yichouwuxianchi", false);
     events.broadcast.emit("message2", "开始刷战阵");
     while (1) {
         if (cs >= 150) {
