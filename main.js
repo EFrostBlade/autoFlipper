@@ -1553,7 +1553,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "4.9";
+    const version = "5.0";
     const picNum = 147;
     const baseUrlproxy = "https://ghproxy.com/raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1674,7 +1674,7 @@ function upDate() {
             img3.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion) >= 4.8) {
+    if (Number(version) > Number(oldVersion) && Number(oldVersion) <= 5.0) {
         log("更新4.7图片中")
         let img2 = images.load(downUrl + "res/" + WIDTH + "/139.png");
         if (img2 != null) {
