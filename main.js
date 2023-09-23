@@ -1553,7 +1553,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "4.7";
+    const version = "4.8";
     const picNum = 147;
     const baseUrlproxy = "https://ghproxy.com/raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1580,7 +1580,7 @@ function upDate() {
     if (oldVersion <= "3.5") {
         oldVersion = 0;
     }
-    log("最新版本" + remoteVersion + "，当前版本" + version + "，历史版本" + oldVersion);
+    log("最新版本" + Number(remoteVersion) + "，当前版本" + Number(version) + "，历史版本" + Number(oldVersion));
     if (Number(version) > Number(oldVersion) && Number(version) <= 1.0) {
         log("更新1.0图片中")
         let img = images.load(downUrl + "res/" + WIDTH + "/23.png");
@@ -1674,7 +1674,7 @@ function upDate() {
             img3.recycle();
         }
     }
-    if (Number(version) > Number(oldVersion) >= 4.7) {
+    if (Number(version) > Number(oldVersion) >= 4.8) {
         log("更新4.7图片中")
         let img2 = images.load(downUrl + "res/" + WIDTH + "/139.png");
         if (img2 != null) {
