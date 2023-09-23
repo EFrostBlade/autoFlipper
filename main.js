@@ -1553,7 +1553,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "4.8";
+    const version = "4.9";
     const picNum = 147;
     const baseUrlproxy = "https://ghproxy.com/raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
