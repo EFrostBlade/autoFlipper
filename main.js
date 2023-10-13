@@ -1553,7 +1553,7 @@ function initjinri() {
 }
 
 function upDate() {
-    const version = "5.0";
+    const version = "5.1";
     const picNum = 147;
     const baseUrlproxy = "https://ghproxy.com/raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
     const baseUrl = "https://raw.githubusercontent.com/EFrostBlade/autoFlipper/main/";
@@ -1686,6 +1686,21 @@ function upDate() {
         if (img3 != null) {
             images.save(img3, scriptPath + "/res/" + WIDTH + "/140.png");
             log("保存图片于" + scriptPath + "/res/" + WIDTH + "/140.png");
+            img3.recycle();
+        }
+    }
+    if (Number(version) > Number(oldVersion) && Number(oldVersion) <= 5.1) {
+        log("更新5.1图片中")
+        let img2 = images.load(downUrl + "res/" + WIDTH + "/122.png");
+        if (img2 != null) {
+            images.save(img2, scriptPath + "/res/" + WIDTH + "/122.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/122.png");
+            img2.recycle();
+        }
+        let img3 = images.load(downUrl + "res/" + WIDTH + "/128.png");
+        if (img3 != null) {
+            images.save(img3, scriptPath + "/res/" + WIDTH + "/128.png");
+            log("保存图片于" + scriptPath + "/res/" + WIDTH + "/128.png");
             img3.recycle();
         }
     }
